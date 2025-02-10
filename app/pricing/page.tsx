@@ -2,6 +2,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Chatbot } from "@/components/Chatbot"
+import { Footer } from "../footer"
 
 const pricingCategories = [
   {
@@ -264,6 +265,7 @@ export default function Pricing() {
       </section>
 
       <Chatbot />
+      <Footer/>
     </main>
   )
 }
