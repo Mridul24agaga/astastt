@@ -57,7 +57,7 @@ export default function Home() {
       <div className="fixed top-0 left-0 w-full h-full">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-square">
           <video autoPlay muted loop playsInline className="w-full h-full object-cover rounded-full">
-            <source src="https://ia9qedouy8.ufs.sh/f/PtoggHlgZbVum6odc3gWj57XSsP8TBfzHc1yUYCLa0eGJltu" type="video/mp4" />
+            <source src="/globe.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="absolute inset-0 bg-black/60" />
