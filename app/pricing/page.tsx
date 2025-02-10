@@ -181,12 +181,12 @@ export default function Pricing() {
                 <Image src="/logo.png" alt="Ainstal Logo" width={140} height={140} className="h-8 md:h-12 w-auto" />
               </Link>
               <div className="flex items-center justify-center md:justify-end space-x-6 md:space-x-8">
-                <Link href="/" className="text-white text-sm md:text-base underline underline-offset-8">
+                <Link href="/" className="text-white text-sm md:text-base">
                   Home
                 </Link>
                 <Link
-                  href="/#pricing"
-                  className="text-white/80 text-sm md:text-base hover:text-white transition-colors"
+                  href="/pricing"
+                  className="text-white/80 text-sm md:text-base hover:text-white transition-colors underline underline-offset-8"
                 >
                   Prices
                 </Link>

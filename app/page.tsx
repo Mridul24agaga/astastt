@@ -78,7 +78,7 @@ export default function Home() {
                   Home
                 </Link>
                 <Link
-                  href="/#pricing"
+                  href="/pricing"
                   className="text-white/80 text-sm md:text-base hover:text-white transition-colors"
                 >
                   Prices
