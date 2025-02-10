@@ -9,14 +9,26 @@ type Message = {
   content: string
 }
 
-const INITIAL_GREETING = "Hi there! 👋"
-const FOLLOW_UP_MESSAGE = "How can I help you today?"
+const INITIAL_GREETING = "Hi there! 👋 Welcome to Ainstal AI Solutions."
+const FOLLOW_UP_MESSAGE = "How can I help you transform your business with AI today?"
 
 const PREDEFINED_OPTIONS = [
-  "Tell me about your AI Chatbot pricing",
+  "Tell me about your AI Chatbot solutions",
   "Explain your content automation services",
-  "What are your enterprise solutions?",
+  "What are your pricing options?",
+  "Can you show me some of your past work?",
 ]
+
+const AI_RESPONSES = {
+  chatbot:
+    "Our AI Chatbots enhance customer experience by providing instant support, scheduling bookings, and engaging visitors 24/7. They're designed to boost efficiency and conversions effortlessly.",
+  contentAutomation:
+    "Our content automation service supercharges your online presence with AI-generated content optimized for SEO, engagement, and conversions. We can instantly generate blogs, sales copy, and more with AI precision.",
+  pricing:
+    "We offer three main pricing tiers:\n1. Full AI Content Suite at $2,499/month\n2. Enterprise AI Assistant starting at $3,999 + $180/month\n3. Premium AI Website starting at $4,999\nEach tier offers different features tailored to your business needs. Would you like more details on a specific plan?",
+  pastWork:
+    "We've successfully completed projects for various clients including Venova Construction, AZ Shamrock Home Buyers, and Star State Roofing. Our portfolio showcases AI-powered solutions and custom web applications that have driven real business results for our clients.",
+}
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,7 +54,7 @@ export function Chatbot() {
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages]) // Fixed dependency array
+  }, [messages, messagesEndRef]) // Added messagesEndRef to dependencies
 
   useEffect(() => {
     if (isOpen && !hasGreeted) {
@@ -68,27 +80,26 @@ export function Chatbot() {
     setInput("")
     setIsLoading(true)
 
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: userInput }),
-      })
+    // Simulate AI response based on user input
+    let aiResponse =
+      "I'm sorry, I don't have specific information about that. Can you try asking about our AI chatbots, content automation, pricing, past work, or our email contact?"
 
-      if (!response.ok) {
-        throw new Error("Failed to get response")
-      }
-
-      const data = await response.json()
-      setMessages((prev) => [...prev, { type: "bot", content: data.response }])
-    } catch (error) {
-      console.error("Error:", error)
-      setMessages((prev) => [...prev, { type: "bot", content: "Sorry, I encountered an error. Please try again." }])
-    } finally {
-      setIsLoading(false)
+    if (userInput.toLowerCase().includes("chatbot")) {
+      aiResponse = AI_RESPONSES.chatbot
+    } else if (userInput.toLowerCase().includes("content automation")) {
+      aiResponse = AI_RESPONSES.contentAutomation
+    } else if (userInput.toLowerCase().includes("pricing") || userInput.toLowerCase().includes("price")) {
+      aiResponse = AI_RESPONSES.pricing
+    } else if (userInput.toLowerCase().includes("email") || userInput.toLowerCase().includes("contact")) {
+      aiResponse = "You can reach us at ainstalsolutions@gmail.com for any inquiries or support."
+    } else if (userInput.toLowerCase().includes("past work") || userInput.toLowerCase().includes("portfolio")) {
+      aiResponse = AI_RESPONSES.pastWork
     }
+
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { type: "bot", content: aiResponse }])
+      setIsLoading(false)
+    }, 1000)
   }
 
   return (
@@ -264,6 +275,6 @@ function TypewriterText({ content }: { content: string }) {
     setCurrentIndex(0)
   }, [content])
 
-  return <div className="leading-relaxed">{displayedContent}</div>
+  return <div className="leading-relaxed whitespace-pre-line">{displayedContent}</div>
 }
 

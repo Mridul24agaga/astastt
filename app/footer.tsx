@@ -34,7 +34,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-semibold mb-4">Contact Now</h3>
             <p className="text-sm text-gray-400">
               Email:{" "}
               <a href="mailto:ainstalsolutions@gmail.com" className="hover:text-white transition-colors">

@@ -109,10 +109,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
               <Link
-                href="/#solutions"
+                href="/#contact"
                 className="group inline-flex h-12 md:h-14 items-center justify-center rounded-full bg-blue-600 px-8 md:px-10 text-base md:text-lg font-medium text-white hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 animate-fade-in-up animation-delay-600"
               >
-                Get Started
+                Contact Us
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
