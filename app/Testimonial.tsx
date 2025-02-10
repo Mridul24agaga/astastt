@@ -1,3 +1,6 @@
+"use client"
+
+import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 
 type Testimonial = {
@@ -54,6 +57,57 @@ const testimonials: Testimonial[] = [
 ]
 
 export default function TestimonialShowcase() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768)
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024)
+    }
+
+    checkScreenSize()
+    window.addEventListener("resize", checkScreenSize)
+    return () => window.removeEventListener("resize", checkScreenSize)
+  }, [])
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    let cardsPerView = 3 // desktop default
+    if (isMobile) cardsPerView = 1
+    else if (isTablet) cardsPerView = 2
+
+    const totalItems = testimonials.length
+
+    const scroll = () => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % totalItems
+        if (scrollContainer) {
+          const scrollAmount = scrollContainer.offsetWidth * (nextIndex / cardsPerView)
+          scrollContainer.scrollTo({
+            left: scrollAmount,
+            behavior: "smooth",
+          })
+        }
+        return nextIndex
+      })
+    }
+
+    const intervalId = setInterval(scroll, 5000) // Change interval as needed
+
+    return () => clearInterval(intervalId)
+  }, [isMobile, isTablet])
+
+  const getCardWidthClass = () => {
+    if (isMobile) return "w-full"
+    if (isTablet) return "w-1/2"
+    return "w-1/3"
+  }
+
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -64,27 +118,30 @@ export default function TestimonialShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:border-blue-500"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 mb-4 overflow-hidden rounded-full">
-                  <Image
-                    src={testimonial.avatarUrl || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    width={80}
-                    height={80}
-                    className="object-cover w-full h-full"
-                  />
+        <div ref={scrollRef} className="flex overflow-x-hidden snap-x snap-mandatory">
+          {[...testimonials, ...testimonials].map((testimonial, index) => (
+            <div key={index} className={`flex-none ${getCardWidthClass()} p-2 md:p-3 snap-start`}>
+              <div className="border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:border-blue-500 h-full">
+                <div className="flex flex-col items-center text-center h-full">
+                  <div className="w-20 h-20 mb-4 overflow-hidden rounded-full">
+                    <Image
+                      src={testimonial.avatarUrl || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      width={80}
+                      height={80}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <blockquote className="text-lg font-medium text-gray-900 mb-4 flex-grow">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <cite className="not-italic mt-auto">
+                    <p className="text-base font-semibold text-gray-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">
+                      {testimonial.role}, {testimonial.company}
+                    </p>
+                  </cite>
                 </div>
-                <blockquote className="text-lg font-medium text-gray-900 mb-4">"{testimonial.quote}"</blockquote>
-                <cite className="not-italic">
-                  <p className="text-base font-semibold text-gray-900">{testimonial.name}</p>
-                 
-                </cite>
               </div>
             </div>
           ))}

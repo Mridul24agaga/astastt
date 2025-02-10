@@ -20,6 +20,33 @@ export default function AdditionalPricing() {
 
         {/* Additional Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          
+
+          {/* Full AI Content Suite */}
+          <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
+            <h3 className="text-xl font-semibold text-white mb-2">Full AI Content Suite</h3>
+            <div className="mb-6">
+              <span className="text-4xl font-bold text-white">$2,499</span>
+              <span className="text-gray-400 ml-2">/month</span>
+            </div>
+            <div className="space-y-4 mb-8 flex-grow">
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">40 Human Written blogs, SEO content & ads</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">AI-powered email campaigns & video scripts</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">Real-time AI content optimization</span>
+              </div>
+            </div>
+            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+              Get Started
+            </button>
+          </div>
           {/* Enterprise AI Assistant */}
           <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
             <h3 className="text-xl font-semibold text-white mb-2">Enterprise AI Assistant</h3>
@@ -39,32 +66,6 @@ export default function AdditionalPricing() {
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
                 <span className="text-gray-300">API Integration with CRM & analytics tools</span>
-              </div>
-            </div>
-            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
-              Get Started
-            </button>
-          </div>
-
-          {/* Full AI Content Suite */}
-          <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
-            <h3 className="text-xl font-semibold text-white mb-2">Full AI Content Suite</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-white">$2,499</span>
-              <span className="text-gray-400 ml-2">/month</span>
-            </div>
-            <div className="space-y-4 mb-8 flex-grow">
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Unlimited AI-generated blogs, SEO content & ads</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">AI-powered email campaigns & video scripts</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Real-time AI content optimization</span>
               </div>
             </div>
             <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">

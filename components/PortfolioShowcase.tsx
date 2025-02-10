@@ -70,15 +70,15 @@ export default function PortfolioShowcase() {
     if (isMobile) cardsPerView = 1
     else if (isTablet) cardsPerView = 2
 
-    const cardWidth = scrollContainer.offsetWidth / cardsPerView
     const totalItems = portfolioItems.length
 
     const scroll = () => {
       setCurrentIndex((prevIndex) => {
         const nextIndex = (prevIndex + 1) % totalItems
         if (scrollContainer) {
+          const scrollAmount = scrollContainer.offsetWidth * (nextIndex / cardsPerView)
           scrollContainer.scrollTo({
-            left: nextIndex * cardWidth,
+            left: scrollAmount,
             behavior: "smooth",
           })
         }
@@ -110,9 +110,9 @@ export default function PortfolioShowcase() {
           </p>
         </div>
 
-        <div ref={scrollRef} className="flex overflow-x-hidden">
-          {[...portfolioItems, ...portfolioItems.slice(0, 2)].map((item, index) => (
-            <div key={index} className={`flex-none ${getCardWidthClass()} p-2 md:p-3`}>
+        <div ref={scrollRef} className="flex overflow-x-hidden snap-x snap-mandatory">
+          {[...portfolioItems, ...portfolioItems].map((item, index) => (
+            <div key={index} className={`flex-none ${getCardWidthClass()} p-2 md:p-3 snap-start`}>
               <div className="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:border-blue-500">
                 <div className="relative aspect-video">
                   <Image src={item.imageUrl || "/placeholder.svg"} alt={item.title} fill className="object-cover" />

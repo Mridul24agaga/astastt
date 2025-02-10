@@ -1,5 +1,4 @@
 "use client"
-import { Check } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Chatbot } from "@/components/Chatbot"
@@ -219,8 +218,8 @@ export default function Pricing() {
                 {category.plans.map((plan, planIndex) => (
                   <div
                     key={planIndex}
-                    className={`bg-gray-800 rounded-lg overflow-hidden ${
-                      plan.highlight ? "ring-2 ring-blue-500 transform scale-105" : ""
+                    className={`relative bg-[#0A1628] rounded-xl border border-white/10 p-6 overflow-visible ${
+                      plan.highlight ? "ring-2 ring-blue-500" : ""
                     }`}
                   >
                     <div className="p-8">
@@ -230,27 +229,29 @@ export default function Pricing() {
                       </div>
                       <ul className="space-y-4 mb-8">
                         {plan.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start">
-                            <Check className="w-5 h-5 text-green-400 mr-2 mt-1 flex-shrink-0" />
-                            <span className="text-gray-300">{feature}</span>
+                          <li key={featureIndex} className="flex items-start gap-3">
+                            <svg viewBox="0 0 16 16" className="h-5 w-5 flex-none text-blue-500" fill="currentColor">
+                              <path d="M8 0L10.2571 5.08359L16 5.81451L11.9428 9.71641L12.9428 15.1854L8 12.6L3.05719 15.1854L4.05719 9.71641L0 5.81451L5.74286 5.08359L8 0Z" />
+                            </svg>
+                            <span className="text-gray-300 text-sm">{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-8 bg-gray-700">
+                    <div className="mt-6">
                       <Link
                         href="/#contact"
                         className={`block w-full py-3 px-4 text-center rounded-lg transition-colors ${
                           plan.highlight
                             ? "bg-blue-600 hover:bg-blue-700 text-white"
-                            : "bg-gray-600 hover:bg-gray-500 text-white"
+                            : "bg-blue-600 hover:bg-blue-700 text-white"
                         }`}
                       >
                         Get Started
                       </Link>
                     </div>
                     {plan.highlight && (
-                      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      <div className="absolute -top-3 right-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
                         Most Popular
                       </div>
                     )}

@@ -5,14 +5,40 @@ import { useState } from "react"
 
 export function SimpleForm() {
   const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [status, setStatus] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted", { name, message })
-    // Reset form fields
-    setName("")
-    setMessage("")
+    setStatus("Sending...")
+
+    const formData = new FormData()
+    formData.append("access_key", "2ca0470a-2a84-4e00-b87a-15f7f2d10f45") // Replace with your actual access key
+    formData.append("name", name)
+    formData.append("email", email)
+    formData.append("message", message)
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        setStatus("Thank you for your submission!")
+        // Reset form fields
+        setName("")
+        setEmail("")
+        setMessage("")
+      } else {
+        setStatus("There was an error. Please try again.")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setStatus("There was an error. Please try again.")
+    }
   }
 
   return (
@@ -27,7 +53,23 @@ export function SimpleForm() {
           placeholder="Enter your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300"
+          required
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300 text-black"
+        />
+      </div>
+
+      <div className="space-y-4 mb-6">
+        <label htmlFor="email-field" className="block text-sm font-semibold text-gray-700">
+          Email
+        </label>
+        <input
+          id="email-field"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300 text-black"
         />
       </div>
 
@@ -40,7 +82,8 @@ export function SimpleForm() {
           placeholder="Enter your message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300 resize-none"
+          required
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300 resize-none text-black"
           rows={4}
         />
       </div>
@@ -51,6 +94,8 @@ export function SimpleForm() {
       >
         Send Message
       </button>
+
+      {status && <p className="mt-4 text-center text-sm font-medium text-gray-700">{status}</p>}
     </form>
   )
 }
