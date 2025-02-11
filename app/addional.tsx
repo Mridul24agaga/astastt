@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function AdditionalPricing() {
   return (
-    <main  id="pricing" className="min-h-screen bg-[#020817]">
+    <main id="pricing" className="min-h-screen bg-[#020817]">
       <div className="container mx-auto px-4 py-24">
         {/* Header */}
         <div className="relative text-center mb-24">
@@ -20,19 +20,17 @@ export default function AdditionalPricing() {
 
         {/* Additional Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          
-
-          {/* Full AI Content Suite */}
+          {/* Full Social Media Content Suite */}
           <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
-            <h3 className="text-xl font-semibold text-white mb-2">Full AI Content Suite</h3>
+            <h3 className="text-xl font-semibold text-white mb-2">Full Social Media Content Suite</h3>
             <div className="mb-6">
-              <span className="text-4xl font-bold text-white">$2,499</span>
-              <span className="text-gray-400 ml-2">/month</span>
+              <span className="text-4xl font-bold text-white">$1,999</span>
+              <span className="text-gray-400 ml-2">/mo</span>
             </div>
             <div className="space-y-4 mb-8 flex-grow">
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">40 Human Written blogs, SEO content & ads</span>
+                <span className="text-gray-300">Unlimited AI-generated social media content & ads</span>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
@@ -42,74 +40,102 @@ export default function AdditionalPricing() {
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
                 <span className="text-gray-300">Real-time AI content optimization</span>
               </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">Unlimited revisions</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">24/7 content generation & support</span>
+              </div>
             </div>
-            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+            <Link
+              href="/#contact"
+              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            >
               Get Started
-            </button>
-          </div>
-          {/* Enterprise AI Assistant */}
-          <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
-            <h3 className="text-xl font-semibold text-white mb-2">Enterprise AI Assistant</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-white">$3,999+</span>
-              <span className="text-gray-400 ml-2">180$/monthly</span>
-            </div>
-            <div className="space-y-4 mb-8 flex-grow">
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Fully customized AI assistant with advanced NLP</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Sales automation & e-commerce recommendations</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">API Integration with CRM & analytics tools</span>
-              </div>
-            </div>
-            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
-              Get Started
-            </button>
+            </Link>
           </div>
 
-          {/* Premium AI Website */}
-          <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
-            <h3 className="text-xl font-semibold text-white mb-2">Premium AI Website</h3>
+          {/* Enterprise AI Chatbot */}
+          <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F] relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+              Most Popular
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Enterprise AI Chatbot</h3>
             <div className="mb-6">
-              <span className="text-4xl font-bold text-white">$4,999+</span>
+              <span className="text-4xl font-bold text-white">$2,999</span>
+              <div className="text-sm text-gray-400 mt-1">Retainer: $199/mo</div>
             </div>
             <div className="space-y-4 mb-8 flex-grow">
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Unlimited pages & full-stack development</span>
+                <span className="text-gray-300">Fully customized AI assistant</span>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">
-                  Custom AI-powered features (personalized recommendations, automation)
-                </span>
+                <span className="text-gray-300">Advanced NLP capabilities</span>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Full E-commerce, SaaS, or Enterprise solution</span>
+                <span className="text-gray-300">CRM & analytics tools integration</span>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">API Integrations & Advanced Automation</span>
+                <span className="text-gray-300">Unlimited conversations</span>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">Full Admin Dashboard & CRM</span>
+                <span className="text-gray-300">24/7 premium support</span>
               </div>
               <div className="flex items-start gap-3">
                 <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <span className="text-gray-300">1-on-1 Strategy Call & Premium Support</span>
+                <span className="text-gray-300">Custom AI model development</span>
               </div>
             </div>
-            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+            <Link
+              href="/#contact"
+              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            >
               Get Started
-            </button>
+            </Link>
+          </div>
+
+          {/* Advanced Dashboard */}
+          <div className="bg-[#0A101F]/80 border border-white/10 rounded-xl p-8 h-full flex flex-col transition-all duration-300 hover:border-blue-500/50 hover:bg-[#0A101F]">
+            <h3 className="text-xl font-semibold text-white mb-2">Advanced Dashboard</h3>
+            <div className="mb-6">
+              <span className="text-4xl font-bold text-white">$3,499</span>
+              <div className="text-sm text-gray-400 mt-1">Retainer: $349/mo</div>
+            </div>
+            <div className="space-y-4 mb-8 flex-grow">
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">AI-powered automation & reports</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">Up to 10 custom features</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">Integration with website & CRM</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">Role-based access control</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Star className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
+                <span className="text-gray-300">60-day support & training</span>
+              </div>
+            </div>
+            <Link
+              href="/#contact"
+              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            >
+              Get Started
+            </Link>
           </div>
         </div>
 

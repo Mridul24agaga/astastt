@@ -3,6 +3,10 @@ import Link from "next/link"
 import Image from "next/image"
 import { Chatbot } from "@/components/Chatbot"
 import { Footer } from "../footer"
+import { motion } from "framer-motion"
+import { usePathname } from "next/navigation"
+
+
 
 const pricingCategories = [
   {
@@ -11,6 +15,7 @@ const pricingCategories = [
       {
         title: "Basic Website",
         price: "$999",
+        retainer: "$99/mo",
         features: [
           "5-page responsive website",
           "Basic SEO optimization",
@@ -22,6 +27,7 @@ const pricingCategories = [
       {
         title: "Advanced Website",
         price: "$2,499",
+        retainer: "$249/mo",
         features: [
           "Up to 15 pages with responsive design",
           "Advanced SEO optimization",
@@ -33,25 +39,27 @@ const pricingCategories = [
         highlight: true,
       },
       {
-        title: "Premium AI Website",
-        price: "$4,999+",
+        title: "Advanced Dashboard",
+        price: "$3,499",
+        retainer: "$349/mo",
         features: [
-          "Unlimited pages & full-stack development",
-          "Custom AI-powered features",
-          "Advanced AI chatbot with NLP",
-          "Full e-commerce suite",
-          "Unlimited revisions",
-          "6-month premium support",
+          "AI-powered automation & reports",
+          "Up to 10 custom features",
+          "Integration with website & CRM",
+          "Role-based access control",
+          "60-day support & training",
         ],
+        highlight: true,
       },
     ],
   },
   {
-    title: "AI Solutions",
+    title: "AI Chatbots",
     plans: [
       {
         title: "AI Chatbot",
-        price: "$499 + $35/mo",
+        price: "$499",
+        retainer: "$35/mo",
         features: [
           "Pre-built AI responses for FAQs",
           "Basic lead capture",
@@ -61,8 +69,9 @@ const pricingCategories = [
         ],
       },
       {
-        title: "Advanced AI Assistant",
-        price: "$1,299 + $80/mo",
+        title: "Advanced AI Chatbot",
+        price: "$1,299",
+        retainer: "$80/mo",
         features: [
           "Custom-trained AI responses",
           "Multi-channel integration",
@@ -73,8 +82,9 @@ const pricingCategories = [
         highlight: true,
       },
       {
-        title: "Enterprise AI Solution",
-        price: "Custom",
+        title: "Enterprise AI Chatbot",
+        price: "$2,999",
+        retainer: "$199/mo",
         features: [
           "Fully customized AI assistant",
           "Advanced NLP capabilities",
@@ -87,67 +97,27 @@ const pricingCategories = [
     ],
   },
   {
-    title: "Dashboards & CRM",
-    plans: [
-      {
-        title: "Basic Dashboard",
-        price: "$1,499",
-        features: [
-          "Custom UI for basic business tracking",
-          "Up to 3 core features",
-          "Data visualization",
-          "Secure admin login",
-          "30-day support",
-        ],
-      },
-      {
-        title: "Advanced Dashboard",
-        price: "$3,499",
-        features: [
-          "AI-powered automation & reports",
-          "Up to 10 custom features",
-          "Integration with website & CRM",
-          "Role-based access control",
-          "60-day support & training",
-        ],
-        highlight: true,
-      },
-      {
-        title: "Enterprise Suite",
-        price: "$7,999+",
-        features: [
-          "Fully customizable dashboard & CRM",
-          "AI-generated insights & forecasting",
-          "Unlimited features & integrations",
-          "Custom AI tools for automation",
-          "Dedicated account manager",
-          "1-year premium support & training",
-        ],
-      },
-    ],
-  },
-  {
     title: "Content Automation",
     plans: [
       {
-        title: "AI Blog Writing",
-        price: "$90",
-        period: "/article",
+        title: "Rank on Google",
+        price: "$99/mo",
+        retainer: null,
         features: [
-          "SEO-optimized, AI-generated blog posts",
+          "15 SEO-optimized, AI-generated blog posts per month",
           "1500+ words, engaging & structured",
           "Keyword research included",
-          "1 round of revisions",
-          "Delivery within 3 business days",
+          "1 round of revisions per blog",
+          "Delivery throughout the month",
         ],
       },
       {
-        title: "AI Copywriting",
-        price: "$699",
-        period: "/month",
+        title: "Social Media Ad Copy",
+        price: "$699/mo",
+        retainer: null,
         features: [
-          "AI-powered sales copy, ads, & product descriptions",
-          "Social media & landing page content",
+          "AI-powered sales copy for social media ads",
+          "Targeted content creation for ad campaigns",
           "10+ pieces of AI-generated content/month",
           "2 rounds of revisions per piece",
           "48-hour turnaround time",
@@ -155,11 +125,11 @@ const pricingCategories = [
         highlight: true,
       },
       {
-        title: "Full AI Content Suite",
-        price: "$2,499",
-        period: "/month",
+        title: "Full Social Media Content Suite",
+        price: "$1,999/mo",
+        retainer: null,
         features: [
-          "Unlimited AI-generated blogs, SEO content & ads",
+          "Unlimited AI-generated social media content & ads",
           "AI-powered email campaigns & video scripts",
           "Real-time AI content optimization",
           "Unlimited revisions",
@@ -171,23 +141,34 @@ const pricingCategories = [
 ]
 
 export default function Pricing() {
+  const pathname = usePathname()
+
   return (
-    <main className="min-h-screen bg-[#020817]">
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-[#020817]"
+    >
       <div className="relative z-10">
-        {/* Navigation */}
         <nav className="bg-[#000B1C] border-b border-white/10">
           <div className="container mx-auto px-4 py-4 md:py-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
               <Link href="/" className="flex items-center justify-center md:justify-start">
                 <Image src="/logo.png" alt="Ainstal Logo" width={140} height={140} className="h-8 md:h-12 w-auto" />
               </Link>
-              <div className="flex items-center justify-center md:justify-end space-x-6 md:space-x-8">
-                <Link href="/" className="text-white text-sm md:text-base">
+              <div className="flex items-center justify-center md:justify-end space-x-4 md:space-x-8 pr-4">
+                <Link href="/" className="text-white/80 text-sm md:text-base hover:text-white transition-colors">
                   Home
+                </Link>
+                <Link href="/blogs" className="text-white/80 text-sm md:text-base hover:text-white transition-colors">
+                  Blog
                 </Link>
                 <Link
                   href="/pricing"
-                  className="text-white/80 text-sm md:text-base hover:text-white transition-colors underline underline-offset-8"
+                  className={`text-white text-sm md:text-base hover:text-white transition-colors ${
+                    pathname === "/pricing" ? "underline underline-offset-8" : ""
+                  }`}
                 >
                   Prices
                 </Link>
@@ -204,7 +185,12 @@ export default function Pricing() {
       </div>
 
       <section id="pricing" className="py-24">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="container mx-auto px-4"
+        >
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Services & Pricing</h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -213,7 +199,13 @@ export default function Pricing() {
           </div>
 
           {pricingCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-24">
+            <motion.div
+              key={categoryIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 * (categoryIndex + 1) }}
+              className="mb-24"
+            >
               <h3 className="text-3xl font-bold text-white mb-8 text-center">{category.title}</h3>
               <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {category.plans.map((plan, planIndex) => (
@@ -227,6 +219,7 @@ export default function Pricing() {
                       <h4 className="text-2xl font-semibold text-white mb-4">{plan.title}</h4>
                       <div className="mb-6">
                         <span className="text-4xl font-bold text-white">{plan.price}</span>
+                        {plan.retainer && <div className="text-xs text-gray-400 mt-1">Retainer: {plan.retainer}</div>}
                       </div>
                       <ul className="space-y-4 mb-8">
                         {plan.features.map((feature, featureIndex) => (
@@ -259,14 +252,14 @@ export default function Pricing() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       <Chatbot />
-      <Footer/>
-    </main>
+      <Footer />
+    </motion.main>
   )
 }
 

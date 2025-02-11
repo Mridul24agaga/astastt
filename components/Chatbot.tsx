@@ -24,8 +24,24 @@ const AI_RESPONSES = {
     "Our AI Chatbots enhance customer experience by providing instant support, scheduling bookings, and engaging visitors 24/7. They're designed to boost efficiency and conversions effortlessly.",
   contentAutomation:
     "Our content automation service supercharges your online presence with AI-generated content optimized for SEO, engagement, and conversions. We can instantly generate blogs, sales copy, and more with AI precision.",
-  pricing:
-    "We offer three main pricing tiers:\n1. Full AI Content Suite at $2,499/month\n2. Enterprise AI Assistant starting at $3,999 + $180/month\n3. Premium AI Website starting at $4,999\nEach tier offers different features tailored to your business needs. Would you like more details on a specific plan?",
+  pricing: `We offer various pricing options across different categories:
+
+1. Websites & Applications:
+   - Basic Website: $999 + $99/mo retainer
+   - Advanced Website: $2,499 + $249/mo retainer
+   - Advanced Dashboard: $3,499 + $349/mo retainer
+
+2. AI Chatbots:
+   - AI Chatbot: $499 + $35/mo retainer
+   - Advanced AI Chatbot: $1,299 + $80/mo retainer
+   - Enterprise AI Chatbot: $2,999 + $199/mo retainer
+
+3. Content Automation:
+   - Rank on Google: $99/mo
+   - Social Media Ad Copy: $699/mo
+   - Full Social Media Content Suite: $1,999/mo
+
+Would you like more details on a specific plan or category?`,
   pastWork:
     "We've successfully completed projects for various clients including Venova Construction, AZ Shamrock Home Buyers, and Star State Roofing. Our portfolio showcases AI-powered solutions and custom web applications that have driven real business results for our clients.",
 }
@@ -54,7 +70,7 @@ export function Chatbot() {
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages, messagesEndRef]) // Added messagesEndRef to dependencies
+  }, [messages, messagesEndRef])
 
   useEffect(() => {
     if (isOpen && !hasGreeted) {
@@ -112,7 +128,7 @@ export function Chatbot() {
             exit={{ opacity: 0, y: 20 }}
             className={`fixed ${
               isMobile ? "inset-2 top-auto" : "bottom-4 right-4 w-[400px]"
-            } bg-white rounded-2xl shadow-2xl flex flex-col max-h-[600px] border border-gray-100`}
+            } bg-white rounded-2xl shadow-2xl flex flex-col max-h-[600px] border border-gray-100 z-50`}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-2xl">
@@ -246,7 +262,7 @@ export function Chatbot() {
             onClick={() => setIsOpen(true)}
             className={`fixed ${
               isMobile ? "bottom-4 right-4" : "bottom-6 right-6"
-            } w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow group`}
+            } w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow group z-50`}
           >
             <MessageCircle className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
           </motion.button>

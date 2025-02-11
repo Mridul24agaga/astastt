@@ -8,6 +8,7 @@ import { Footer } from "./footer"
 import { Chatbot } from "@/components/Chatbot"
 import PortfolioShowcase from "@/components/PortfolioShowcase"
 import TestimonialShowcase from "./Testimonial"
+import WhatWeOffer from "@/components/what-we-offer"
 import AdditionalPricing from "./addional"
 
 export const metadata: Metadata = {
@@ -73,14 +74,14 @@ export default function Home() {
               <Link href="/" className="flex items-center justify-center md:justify-start">
                 <Image src="/logo.png" alt="Ainstal Logo" width={140} height={140} className="h-8 md:h-12 w-auto" />
               </Link>
-              <div className="flex items-center justify-center md:justify-end space-x-6 md:space-x-8">
+              <div className="flex items-center justify-center md:justify-end space-x-4 md:space-x-8 pr-4">
                 <Link href="/" className="text-white text-sm md:text-base underline underline-offset-8">
                   Home
                 </Link>
-                <Link
-                  href="/pricing"
-                  className="text-white/80 text-sm md:text-base hover:text-white transition-colors"
-                >
+                <Link href="/blogs" className="text-white/80 text-sm md:text-base hover:text-white transition-colors">
+                  Blog
+                </Link>
+                <Link href="/pricing" className="text-white/80 text-sm md:text-base hover:text-white transition-colors">
                   Prices
                 </Link>
                 <Link
@@ -126,6 +127,7 @@ export default function Home() {
           </div>
         </section>
 
+        <WhatWeOffer />
         <Solutions />
         <PortfolioShowcase />
         <TestimonialShowcase />

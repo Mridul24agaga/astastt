@@ -22,13 +22,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#solutions" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  Solutions
+                <Link href="/blogs" className="text-sm text-gray-400 hover:text-white transition-colors">
+                   Blog
                 </Link>
               </li>
               <li>
                 <Link href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  Pricing
+                  Prices
+                </Link>
+              </li>
+              <li>
+                <Link href="/#contact" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
